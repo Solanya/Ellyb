@@ -24,6 +24,13 @@ function System:IsTrialAccount()
 	return IsTrialAccount();
 end
 
+function System:IsClassicClient()
+	local interfaceVersion = select(4, GetBuildInfo());
+	if interfaceVersion >= 11300 and interfaceVersion < 20000 then
+	    return true;
+	end
+end
+
 local SHORTCUT_SEPARATOR = System:IsMac() and "-" or " + ";
 
 System.MODIFIERS = {
