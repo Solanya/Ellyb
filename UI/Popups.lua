@@ -29,7 +29,7 @@ URLPopup.Url:HookScript("OnEscapePressed", dismissPopup);
 URLPopup.Url:HookScript("OnKeyDown", function(_, key)
 	if key == "C" and IsControlKeyDown() then
 		local systemInfo = ChatTypeInfo["SYSTEM"];
-		UIErrorsFrame:AddMessage(Ellyb.loc.COPY_SYSTEM_MESSAGE, systemInfo.r, systemInfo.g, systemInfo.b);
+		UIErrorsFrame:AddMessage(URLPopup.alertMessage, systemInfo.r, systemInfo.g, systemInfo.b);
 		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
 		dismissPopup();
 	end
@@ -41,7 +41,7 @@ end);
 ---@param customShortcutInstructions string A custom text for the copy and paste shortcut instructions.
 ---@overload fun(url: string)
 ---@overload fun(url: string, customText: string)
-function Popups:OpenURL(url, customText, customShortcutInstructions)
+function Popups:OpenURL(url, customText, customShortcutInstructions, customAlertOnClose)
 	local popupText = customText and (customText .. "\n\n") or "";
 	if not customShortcutInstructions then
 		customShortcutInstructions = Ellyb.loc.COPY_URL_POPUP_TEXT;
@@ -49,6 +49,10 @@ function Popups:OpenURL(url, customText, customShortcutInstructions)
 	popupText = popupText .. customShortcutInstructions:format(ORANGE(Ellyb.System.SHORTCUTS.COPY), ORANGE(Ellyb.System.SHORTCUTS.PASTE));
 	URLPopup.Text:SetText(popupText);
 	URLPopup.Url:SetText(url);
+	if not customAlertOnClose then
+		customAlertOnClose = Ellyb.loc.COPY_SYSTEM_MESSAGE;
+	end
+	URLPopup.alertMessage = customAlertOnClose;
 	URLPopup:SetHeight(120 + URLPopup.Text:GetHeight());
 	URLPopup:Show();
 end
