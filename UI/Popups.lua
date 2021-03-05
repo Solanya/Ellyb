@@ -26,6 +26,14 @@ local function dismissPopup()
 end
 URLPopup.Url:HookScript("OnEnterPressed", dismissPopup);
 URLPopup.Url:HookScript("OnEscapePressed", dismissPopup);
+URLPopup.Url:HookScript("OnKeyDown", function(_, key)
+	if key == "C" and IsControlKeyDown() then
+		local systemInfo = ChatTypeInfo["SYSTEM"];
+		UIErrorsFrame:AddMessage(Ellyb.loc.COPY_SYSTEM_MESSAGE, systemInfo.r, systemInfo.g, systemInfo.b);
+		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
+		dismissPopup();
+	end
+end);
 
 --- Open a popup with an autofocused text field to let the user copy the URL
 ---@param url string The URL we want to let the user copy

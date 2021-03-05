@@ -22,6 +22,7 @@ local loc  = {
 	COPY_URL_POPUP_TEXT = [[
 You can copy this link by using the %s keyboard shortcut and then paste the link inside your browser using the %s shortcut.
 ]],
+	COPY_SYSTEM_MESSAGE = "Copied to clipboard.",
 };
 
 loc = Ellyb.Localization(loc);
@@ -47,6 +48,7 @@ Ellyb.loc:RegisterNewLocale(Ellyb.Enum.LOCALES.FRENCH, "Français", {
 	COPY_URL_POPUP_TEXT = [[
 Vous pouvez copier ce lien en utilisant le raccourci clavier %s pour ensuite le coller dans votre navigateur web avec le raccourci clavier %s.
 ]],
+	COPY_SYSTEM_MESSAGE = "Copié dans le presse-papiers.",
 })
 
 Ellyb.loc:SetCurrentLocale(GetLocale(), true);
