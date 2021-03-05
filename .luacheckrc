@@ -75,6 +75,7 @@ read_globals = {
 	"STANDARD_TEXT_FONT",
 	"ChatFontNormal",
 	"Enum",
+	"SOUNDKIT",
 
 	-- ENUMS
 	"UPPER_RIGHT_VERTEX",
